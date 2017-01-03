@@ -40,7 +40,11 @@ abstract class Application {
 	
 	public static function getNSID() {
 		if(!self::$_nsid) {
-			self::$_nsid = preg_match('/^[0-9]+@[A-Z]{1}[0-9]+$/',$_GET['user']) ? $_GET['user'] : Flickr::NSIDforURLname($_GET['user']);
+			if(preg_match('/^[0-9]+@[A-Z]{1}[0-9]+$/',$_GET['user'])) {
+				self::$_nsid = $_GET['user'];
+			} else {
+				self::$_nsid = Flickr::NSIDforURLname($_GET['user']);
+			}
 		}
 		return self::$_nsid;
 	}

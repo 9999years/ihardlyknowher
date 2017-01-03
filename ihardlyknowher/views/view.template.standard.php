@@ -8,7 +8,9 @@
 <? foreach($css as $src): ?>
 <link rel="stylesheet" type="text/css" href="/<?= $src ?>.css">
 <? endforeach ?>
+<div id="container">
 <?= $content ?>
+</div>
 <? foreach($js as $src): ?>
 <script src="/<?= $src ?>.js"></script>
 <? endforeach ?>

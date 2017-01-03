@@ -2,7 +2,12 @@ html, body {
 	 font-family: "Segoe UI", "Segoe UI Symbol", -apple-system, "Helvetica", "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "Noto Sans",  "FreeSans", "Code2001", "Code2000", "DejaVu Sans",  sans-serif;
 	 font-size: 18px;
 	 line-height: 28px;
-	 padding: 2em;
+	 padding: 0;
+	 margin: 0;
+}
+
+#container {
+	margin: 50px 20px;
 }
 
 a, a:visited {
@@ -20,58 +25,72 @@ a:hover {
 	background-image: linear-gradient(to bottom,rgba(0,0,0,0) 50%,rgba(68, 68, 68, 0.3) 50%);
 }
 
-div.regular p, div.regular h1 {
+.regular p, .regular h1 {
 	 margin-bottom: 1.5em;
 }
 
-div.regular b {
+.regular b {
 	 font-weight: bold;
 }
 
-div.regular i {
+.regular i {
 	 font-family: monospace;
 	 font-style: italic;
 	 background: #e3e3e3;
 	 margin-left: 0.4em;
 }
 
-
-div.faq h2 {
+.faq h2 {
 	 font-weight: bold;
 }
 
-div.faq p {
+.faq p {
 	 width: 400px;
 	 margin-bottom: 2em;
 }
 
-
-div.settings form {
-	 margin-bottom: 1.5em;
-	 ;
+.title {
+	text-align: center;
 }
 
-div.settings form p {
+.title a {
+    background: none;
+}
+
+.settings form {
+	 margin-bottom: 1.5em;
+}
+
+.settings form p {
 	 margin-top: 1.5em;
 	 margin-bottom: 0;
 }
 
-div.settings form input[type='radio'] {
+.settings form input[type='radio'] {
 	 margin-left: 2em;
 }
 
-
-div.photos {
+.photos {
 	 margin-top: 30px;
 }
 
-div.photos li.photo {
+div.photo {
 	 margin: 0 auto;
 	 line-height: 0;
 	 margin-bottom: 30px;
 }
 
-div.photos li.pagers, div.photos li.footer {
+a.photo {
+	background: none;
+}
+
+.photo img {
+	display: block;
+	margin: auto;
+	max-width: 100%;
+ }
+
+.photos .pagers, .photos .footer {
 	 color: #333;
 	 margin: 0 auto;
 	 text-align: center;
@@ -80,41 +99,53 @@ div.photos li.pagers, div.photos li.footer {
 	 font: 14px helvetica,sans-serif;
 }
 
-div.photos li.pagers div.left {
-	 position: absolute;
-	 bottom: 0;
-	 left: 0;
+.photos .pagers .left {
+	display: inline-block;
+	float: left;
 }
 
-div.photos li.pagers div.right {
-	 position: absolute;
-	 bottom: 0;
-	 right: 0;
+.photos .pagers .right {
+	display: inline-block;
+	float: right;
 }
 
-div.photos li.pagers a {
+.photos .pagers a {
 	 color: #333;
 }
 
-div.photos li.pagers a:hover {
+.photos .pagers a:hover {
 	 text-decoration: none;
 }
 
-div.photos li.pagers a.homelink {
+.photos .pagers a.homenk {
 	 font-size: 12px;
 	 text-transform: uppercase;
 }
 
-div.photos li.footer {
+.photos .footer {
 	 margin-top: -6px;
 	 color: #aaa;
 	 font-size: 11px;
 }
 
-div.photos li.footer a {
+.photos .footer a {
 	 color: #aaa;
 }
 
-div.photos li.footer a:hover {
+.photos .footer a:hover {
 	 text-decoration: none;
+}
+
+@media (max-width: 650px) {
+	#container {
+		margin: 20px 5px;
+	}
+
+	.photos {
+		margin-top: 10px;
+	}
+
+	div.photo {
+		margin-bottom: 10px;
+	}
 }

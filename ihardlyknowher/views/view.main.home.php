@@ -6,10 +6,8 @@
 	If your Flickr URL is <i>flickr.com/photos/yourname</i><br>
 	find yourself at <i>ihardlyknowher.becca.ooo/yourname</i>
 	<p>
-	For example — <a href="https://flickr.com/photos/quarlo" target="_blank">flickr.com/photos/<b>quarlo</b></a><br>
-	…becomes <a href="/quarlo">ihardlyknowher.becca.ooo/<b>quarlo</b></a>
-	<p>
-	<a href="/user.settings">Adjust settings</a> by authenticating with Flickr.
+	For example — <a href="https://flickr.com/photos/techb" target="_blank">flickr.com/photos/<b>techb</b></a><br>
+	…becomes <a href="/techb">ihardlyknowher.becca.ooo/<b>techb</b></a>
 	<p>
 	<a href="/faq">FAQ</a>
 	<p>

@@ -3,6 +3,7 @@
 
 	abstract class Flickr {
 		public static function call($args,$cache_duration = 300) {
+			$serial = false;
 			$args['api_key'] = FLICKR_API_KEY;
 			$args['format'] = 'php_serial';
 			ksort($args);
@@ -27,7 +28,7 @@
 					Cache::delete($key);
 				}
 
-				if(!isset($serial)) {
+				if(!$serial) {
 					$serial = file_get_contents($url);
 					$object = unserialize($serial);
 					if($object && $object['stat'] === 'ok' && $cache_duration >= 0) {
@@ -38,8 +39,6 @@
 				$serial = file_get_contents($url);
 				$object = unserialize($serial);
 			}
-
-			var_dump($serial);
 
 			return $object ? $object : false;
 		}
@@ -54,21 +53,30 @@
 				'method' => 'flickr.people.getInfo',
 				'user_id' => $nsid
 			), 86400);
-			//var_dump($response);
 
 			if($response['stat'] === 'ok') {
 				preg_match('/^https:\/\/www.flickr.com\/photos\/(.+)\/$/',$response['person']['photosurl']['_content'],$urlmatches);
 				return array(
-					'username' => $response['person']['username']['_content'],
-					'realname' => $response['person']['realname']['_content'],
-					'urlname' => $urlmatches[1],
-					'location' => $response['person']['location']['_content'],
-					'photosurl' => $response['person']['photosurl']['_content'],
-					'profileurl' => $response['person']['profileurl']['_content'],
-					'mobileurl' => $response['person']['mobileurl']['_content'],
-					'firstdatetaken'  => $response['person']['photos']['firstdatetaken']['_content'],
-					'firstdate' => $response['person']['photos']['firstdate']['_content'],
-					'count' => $response['person']['photos']['count']['_content']
+					'username'
+						=> array_key_exists('username', $response['person']) ? $response['person']['username']['_content'] : false,
+					'realname'
+						=> array_key_exists('realname', $response['person']) ? $response['person']['realname']['_content'] : false,
+					'urlname'
+						=> $urlmatches[1],
+					'location'
+						=> array_key_exists('location', $response['person']) ? $response['person']['location']['_content'] : false,
+					'photosurl'
+						=> array_key_exists('photosurl', $response['person']) ? $response['person']['photosurl']['_content'] : false,
+					'profileurl'
+						=> array_key_exists('profileurl', $response['person']) ? $response['person']['profileurl']['_content'] : false,
+					'mobileurl'
+						=> array_key_exists('mobileurl', $response['person']) ? $response['person']['mobileurl']['_content'] : false,
+					'firstdatetaken'
+						=> array_key_exists('firstdatetaken', $response['person']['photos']) ? $response['person']['photos']['firstdatetaken']['_content'] : false,
+					'firstdate'
+						=> array_key_exists('firstdate', $response['person']['photos']) ? $response['person']['photos']['firstdate']['_content'] : false,
+					'count'
+						=> array_key_exists('count', $response['person']['photos']) ? $response['person']['photos']['count']['_content'] : false
 				);
 			} else {
 				return false;
