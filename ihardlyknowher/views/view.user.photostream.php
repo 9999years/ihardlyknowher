@@ -1,4 +1,4 @@
-<? if($photos): ?>
+<? if(isset($photos)): ?>
 	<div class="photos">
 		<ul>
 			<? foreach($photos as $photo): ?>

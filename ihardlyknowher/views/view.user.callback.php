@@ -1,8 +1,8 @@
 <div class="regular settings">
-	<? if ($error): ?>
+	<? if (isset($error)): ?>
 		<p><?= $error ?></p>
 	<? else: ?>
-		<p>Hello, <strong><?= $userinfo['username'] ?></strong>.</p>
+		<p>Hello, <b><?= $userinfo['username'] ?></b>.</p>
 		<form action="/save.settings" method="post" name="settings">
 			<input type="hidden" name="token" value="<?= $this->token ?>" />
 			
